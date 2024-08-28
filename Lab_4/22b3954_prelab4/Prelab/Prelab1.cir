@@ -1,0 +1,23 @@
+RN142 PIN Diode
+r1 2 0 100
+.MODEL DRN142S D(
++ IS=127.76E-12
++ N=1.7346
++ RS=.1581
++ IKF=.14089
++ CJO=385.59E-15
++ M=.11823
++ VJ=.78827
++ ISR=139.38E-12
++ NR=3
++ BV=60
++ TT=275.00E-9)
+d1 1 2 DRN142S
+vdc 1 0 dc 0
+.dc vdc 0 1 0.01
+.control
+run
+plot (v(2)/100) vs v(1)-v(2)
+plot ln(v(2)/100 + 1e-9) vs v(1)-v(2)
+.endc
+.end

@@ -1,0 +1,70 @@
+PIN Diode RF Switch Circuit
+Vin 1 0 AC 6 SIN(0 6 10Meg)
+Vbias 3 0 DC -5
+C1 1 2 100n
+C2 4 5 100n
+R1 2 0 500
+R2 3 4 500
+R3 5 0 50
+R4 2 6 1
+D1 4 6 RN142S
+
+Vbiasb 3b 0 DC 0
+C1b 1 2b 100n
+C2b 4b 5b 100n
+R1b 2b 0 500
+R2b 3b 4b 500
+R3b 5b 0 50
+R4b 2b 6b 1
+D1b 4b 6b RN142S
+
+Vbiase 3e 0 DC 1
+C1e 1 2e 100n
+C2e 4e 5e 100n
+R1e 2e 0 500
+R2e 3e 4e 500
+R3e 5e 0 50
+R4e 2e 6e 1
+D1e 4e 6e RN142S
+
+Vbiasf 3f 0 DC 3
+C1f 1 2f 100n
+C2f 4f 5f 100n
+R1f 2f 0 500
+R2f 3f 4f 500
+R3f 5f 0 50
+R4f 2f 6f 1
+D1f 4f 6f RN142S
+
+Vbiasg 3g 0 DC 5
+C1g 1 2g 100n
+C2g 4g 5g 100n
+R1g 2g 0 500
+R2g 3g 4g 500
+R3g 5g 0 50
+R4g 2g 6g 1
+D1g 4g 6g RN142S
+
+.model RN142S D(
++ IS=127.76E-12
++ N=1.7346
++ RS=.1581
++ IKF=.14089
++ CJO=385.59E-15
++ M=.11823
++ VJ=.78827
++ ISR=139.38E-12
++ NR=3
++ BV=60
++ TT=275.00E-9)
+
+* Transient Analysis
+.tran 0.1n 200n
+.control
+run
+plot V(5) v(1) v(5b) v(5e) v(5f) v(5g)
+plot (v(5)/50) (v(5b)/50) (v(5e)/50) (v(5f)/50) (v(5g)/50) 
+plot (V(6)-V(2)/1) (V(6b)-V(2b)/1) (V(6e)-V(2e)/1) (V(6f)-V(2f)/1) (V(6g)-V(2g)/1)
+.endc
+.end
+
